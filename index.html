@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyTrack - Planejamento de Estudos</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- TELA DE LOGIN -->
+    <div id="loginPanel" class="login-container">
+        <div class="logo-area">
+            <div class="logo-text">
+                <h1>UNISAGRADO</h1>
+                <p>Ensino Superior de Excelência</p>
+            </div>
+        </div>
+        <div class="login-form">
+            <h2>Login</h2>
+            <div class="input-group">
+                <label>E-mail</label>
+                <input type="email" id="loginEmail" placeholder="usuario@email.com">
+            </div>
+            <div class="input-group">
+                <label>Senha</label>
+                <input type="password" id="loginPassword" placeholder="********">
+            </div>
+            <button class="btn-login" id="btnLogin">Acessar plataforma</button>
+            <div id="loginError" class="error-msg">Usuário inválido</div>
+        </div>
+    </div>
+
+    <!-- APLICAÇÃO PRINCIPAL -->
+    <div id="appPanel" class="app-container">
+        <div class="container">
+            <header>
+                <div>
+                    <h1><i class="fas fa-book"></i> StudyTrack</h1>
+                    <p>Sistema de Planejamento e Acompanhamento de Estudos</p>
+                </div>
+                <button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Sair</button>
+            </header>
+
+            <!-- Cadastro de Disciplinas -->
+            <section class="card">
+                <h2><i class="fas fa-graduation-cap"></i> Cadastrar Disciplina</h2>
+                <form id="disciplinaForm">
+                    <div class="form-group">
+                        <label>Nome da Disciplina:</label>
+                        <input type="text" id="nomeDisciplina" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Carga Horária Prevista (horas):</label>
+                        <input type="number" id="cargaHoraria" min="1" required>
+                    </div>
+                    <button type="submit"><i class="fas fa-plus"></i> Adicionar Disciplina</button>
+                </form>
+                <div id="listaDisciplinas" class="lista-itens"></div>
+            </section>
+
+            <!-- Cadastro de Metas (semanais) -->
+            <section class="card">
+                <h2><i class="fas fa-target"></i> Cadastrar Meta Semanal</h2>
+                <form id="metaForm">
+                    <select id="selectDisciplina" required>
+                        <option value="">Selecione uma disciplina...</option>
+                    </select>
+                    <div class="form-group">
+                        <label>Horas Meta por Semana:</label>
+                        <input type="number" id="horasMeta" step="0.5" min="1" required>
+                    </div>
+                    <button type="submit"><i class="fas fa-plus"></i> Adicionar Meta</button>
+                </form>
+                <div id="listaMetas" class="lista-itens"></div>
+            </section>
+
+            <!-- Registro de Horas Estudadas -->
+            <section class="card">
+                <h2><i class="fas fa-clock"></i> Registrar Horas Estudadas</h2>
+                <form id="registroForm">
+                    <select id="selectDisciplinaRegistro" required>
+                        <option value="">Selecione uma disciplina...</option>
+                    </select>
+                    <div class="form-group">
+                        <label>Data:</label>
+                        <input type="date" id="dataEstudo" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Horas Estudadas:</label>
+                        <input type="number" id="horasEstudadas" min="0" step="0.1" required>
+                    </div>
+                    <button type="submit"><i class="fas fa-save"></i> Registrar</button>
+                </form>
+                <div id="listaRegistros" class="lista-itens"></div>
+            </section>
+
+            <!-- Dashboard de Progresso -->
+            <section class="dashboard">
+                <h2><i class="fas fa-chart-line"></i> Dashboard de Progresso</h2>
+                <div class="filtros">
+                    <button class="filtro-btn active" data-filtro="todas">Todas</button>
+                    <button class="filtro-btn" data-filtro="semana">Esta semana</button>
+                    <button class="filtro-btn" data-filtro="mes">Este mês</button>
+                </div>
+                <div id="relatorios" class="relatorios-grid"></div>
+            </section>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
